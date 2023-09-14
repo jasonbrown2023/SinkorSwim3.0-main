@@ -14,6 +14,7 @@ struct CollectionTableViewCellView {
 }
 
 class CollectViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    //Mark - Init
     private let tableView:  UITableView = {
     let table = UITableView()
     table.register(CollectionTableViewCell.self,
@@ -38,7 +39,7 @@ class CollectViewController: UIViewController, UITableViewDataSource, UITableVie
     let data = ["Apple", "Google", "NVidia", "Intel", "Facebook", "Microsoft"]
     
     
-
+    //Mark - Layout
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableView)
@@ -55,6 +56,7 @@ class CollectViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.frame = view.bounds
     }
     
+    //Mark - TableView
     @objc func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModels.count
     }
@@ -78,7 +80,7 @@ class CollectViewController: UIViewController, UITableViewDataSource, UITableVie
         
 
     }
-
+//Mark - Collection View
 extension CollectViewController: CollectionTableViewCellDelegate{
     func collectionTableViewCellDidTapItem(with viewModel: TileCollectionViewCellViewModel) {
         let alert = UIAlertController(title: viewModel.name,
