@@ -21,6 +21,7 @@ class TileCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    //Mark - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(label)
@@ -34,6 +35,7 @@ class TileCollectionViewCell: UICollectionViewCell {
         fatalError()
     }
     
+    //Mark - Layout
     override func layoutSubviews() {
         super.layoutSubviews()
         label.frame = contentView.bounds 

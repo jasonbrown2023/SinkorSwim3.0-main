@@ -22,8 +22,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var selectedRow = 0
     var selectedRowTextColor = 0
     
+    //Declare dictionary of UIColors
     var backGroundColours : KeyValuePairs =
         [
+            //Mark - Init
             "WHITE": UIColor.white,
             "GRAY": UIColor.lightGray,
             "BLUE": UIColor.blue,
@@ -38,6 +40,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         pickerView.dataSource = self
         pickerView.delegate = self
         
+        //Mark - Layout
+        
         pickerView.selectRow(selectedRow, inComponent: 0, animated: false)
         pickerView.selectRow(selectedRowTextColor, inComponent: 1, animated: false)
         
@@ -45,13 +49,14 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         pickerView.centerXAnchor.constraint(equalTo: vc.view.centerXAnchor).isActive = true
         pickerView.centerYAnchor.constraint(equalTo: vc.view.centerYAnchor).isActive = true
         
+        //Mark - Prompt
         let alert = UIAlertController(title: "Select Background Colour", message: "", preferredStyle: .actionSheet)
         
         alert.popoverPresentationController?.sourceView = pickerViewButton
         alert.popoverPresentationController?.sourceRect = pickerViewButton.bounds
         alert.setValue(vc, forKey: "contentViewController")
         
-        
+        //Select controller's options
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (UIAlertAction) in } ))
         alert.addAction(UIAlertAction(title: "Select", style: .default, handler: {
             (UIAlertAction) in
@@ -72,6 +77,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
     }
     
+    
+    //Mark Layout
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel(frame: CGRect(x: 0, y:0, width: screenWidth, height: 30))
         label.text = Array(backGroundColours)[row].key
